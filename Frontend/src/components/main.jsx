@@ -1,4 +1,5 @@
 import React from 'react';
+import { RxAvatar } from "react-icons/rx";
 import Im from '../imgs/hh.png';
 
 const Main = () => {
@@ -62,11 +63,8 @@ const Main = () => {
         <div className="absolute bottom-4 left-8 bg-white text-black p-3 rounded-lg shadow-md text-sm">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-full overflow-hidden">
-              <img
-                src="https://via.placeholder.com/32"
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
+            <RxAvatar className='w-full h-full'/>
+
             </div>
             <div>
               <p className="font-semibold">Job Interview Today</p>
