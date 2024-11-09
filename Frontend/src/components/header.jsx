@@ -1,6 +1,4 @@
-import React from 'react'
-
- const header = () => {
+const header = () => {
   return (
     <>
     <div className="main bg-black p-[2em] font-[poppins] text-white">
