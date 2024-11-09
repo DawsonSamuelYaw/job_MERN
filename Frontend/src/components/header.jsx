@@ -1,7 +1,7 @@
 const header = () => {
   return (
     <>
-    <div className="main bg-black p-[2em] font-[poppins] text-white">
+    <div className="main bg-[#1E3A8A] p-[2em] font-[poppins] text-white">
         <div className="flex space-x-[10px] justify-between">
             <div className="sub-1 py-2">
                 <h1>JobHub</h1>

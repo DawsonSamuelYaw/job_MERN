@@ -3,7 +3,7 @@ import Im from '../imgs/hh.png';
 
 const Main = () => {
   return (
-    <div className="main font-[poppins] flex flex-col-reverse md:flex-row items-center justify-around bg-gradient-to-r from-blue-600 to-indigo-500 p-8 md:p-16 text-white space-x-[7em]">
+    <div className="main font-[poppins] flex flex-col-reverse md:flex-row items-center justify-around bg-gradient-to-r from-[#4F46E5] to-[#60A5FA] p-8 md:p-16 text-white space-x-[7em]">
       
       {/* Left Container */}
       <div className="main__container max-w-lg md:text-left text-center space-y-6">
@@ -16,7 +16,7 @@ const Main = () => {
         
         {/* Buttons */}
         <div className="join flex flex-col md:flex-row items-center md:justify-start space-y-4 md:space-y-0 md:space-x-4">
-          <button className="join__btn bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:scale-105">
+          <button className="join__btn bg-[#14B8A6] hover:bg-[#FBBF24] text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:scale-105">
             Join Now
           </button>
         </div>

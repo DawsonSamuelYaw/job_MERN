@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaPinterest, FaXTwitter } from "re
 
 const Footer = () => {
   return (
-    <div className="footer bg-black mt-4 p-6 text-white font-[poppins]">
+    <div className="footer bg-[#6B7280] mt-4 p-6 text-white font-[poppins]">
       <div className="flex flex-col md:flex-row md:justify-around md:space-y-0 space-y-6">
         
         {/* Company Info Section */}
@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="about mt-2 text-sm">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate id quod facilis nesciunt ullam, sed culpa. Consequatur id error odio dolores deserunt dolorum veritatis, sint aspernatur illo, dicta tenetur praesentium!
           </div>
-          <div className="social flex space-x-2 mt-3">
+          <div className="social flex space-x-2 mt-3 text-[#14B8A6]">
             <FaXTwitter />
             <FaFacebook />
             <FaInstagram />
