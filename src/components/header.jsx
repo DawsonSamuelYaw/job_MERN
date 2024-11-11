@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import {
   FaHome,
   FaBriefcase,
@@ -8,8 +9,29 @@ import {
 } from "react-icons/fa";
 
 const Header = () => {
+  // User states for registering
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("https://mern-workspace-api-1.onrender.com/api/v1/users/register", {
+        userName,
+        email,
+        password,
+      })
+      .then((response) => {
+        console.log(response);
+        setIsModalOpen(false); // Close modal on successful submission
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -26,7 +48,6 @@ const Header = () => {
           <div className="sub-1 py-2">
             <h1 className="text-2xl font-bold">JobHub</h1>
           </div>
-
           {/* Hamburger Icon / Close Icon */}
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} className="focus:outline-none">
@@ -63,7 +84,6 @@ const Header = () => {
               )}
             </button>
           </div>
-
           {/* Navigation Links for larger screens */}
           <div className="hidden md:flex md:space-x-8 flex-grow justify-center">
             <nav className="flex space-x-4">
@@ -81,7 +101,6 @@ const Header = () => {
               </a>
             </nav>
           </div>
-
           {/* Sign in and Buttons for larger screens */}
           <div className="hidden md:flex items-center space-x-4 mt-4 md:mt-0">
             <button onClick={toggleModal} className="hover:font-extrabold">
@@ -138,14 +157,11 @@ const Header = () => {
               >
                 <FaInfoCircle className="mr-1" /> About Us
               </a>
-              <button onClick={toggleModal} className="hover:font-extrabold">
-                Sign up
-              </button>
               <div className="sub flex space-x-2">
                 <button className="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-800 transition duration-300">
                   Sign in
                 </button>
-                <button className="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-800 transition duration-300">
+                <button className="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-800 transition duration=300">
                   Post Job
                 </button>
               </div>
@@ -168,7 +184,10 @@ const Header = () => {
               }`}
             >
               <h2 className="text-xl font-bold mb-4">Sign Up</h2>
-              <form>
+              <form
+                onSubmit={handleSubmit}
+                className="bg-white rounded-lg shadow-lg p-6 space-y-4 max-w-md mx-auto"
+              >
                 {/* Username Field */}
                 <div className="mb-4">
                   <label
@@ -181,8 +200,9 @@ const Header = () => {
                     type="text"
                     id="username"
                     required
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out shadow-sm hover:shadow-md"
                     placeholder="Enter your username"
+                    onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
 
@@ -198,8 +218,9 @@ const Header = () => {
                     type="email"
                     id="email"
                     required
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out shadow-sm hover:shadow-md"
                     placeholder="Enter your email"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
@@ -215,16 +236,16 @@ const Header = () => {
                     type="password"
                     id="password"
                     required
-                    className="mt-1 block w-full border border-gray-300 rounded-md p=2 focus:outline-none focus:ring focus:ring-blue=500"
+                    className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out shadow-sm hover:shadow-md"
                     placeholder="Enter your password"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  onClick={toggleModal}
-                  className="w-full bg-blue=700 text-white py-[10px] rounded-md hover:bg-blue=800 transition duration-[200ms]"
+                  className="w-full bg-blue-700 text-white py-[10px] rounded-md hover:bg-blue-800 transition duration-[200ms] shadow-md hover:shadow-lg"
                 >
                   Sign Up
                 </button>
@@ -233,7 +254,7 @@ const Header = () => {
                 <button
                   type="button"
                   onClick={toggleModal}
-                  className="mt-[10px] w-full text-center text-gray-[600] hover:text-gray-[900]"
+                  className="mt-[10px] w-full text-center text-gray-600 hover:text-gray-900 transition duration-200 ease-in-out"
                 >
                   Cancel
                 </button>
