@@ -4,7 +4,7 @@ import Im from "../imgs/hh.png";
 
 const Main = () => {
   return (
-    <div className="main font-[poppins] h-screen  flex flex-col-reverse md:flex-row items-center justify-around bg-gradient-to-r from-[#4F46E5] to-[#60A5FA] p-8 md:p-16 text-white">
+    <div className="main font-[poppins] h-[90vh] flex flex-col-reverse md:flex-row items-center justify-around bg-gradient-to-r from-[#4F46E5] to-[#60A5FA] p-8 md:p-16 text-white">
       {/* Left Container */}
       <div className="main__container max-w-lg md:text-left text-center space-y-6">
         <h1 className="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">

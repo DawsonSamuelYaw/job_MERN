@@ -9,8 +9,6 @@ import { BrowserRouter } from "react-router-dom"; // Import the BrowserRouter
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    {" "}
-    {/* Wrap your app with BrowserRouter */}
     <App />
   </BrowserRouter>
 );
