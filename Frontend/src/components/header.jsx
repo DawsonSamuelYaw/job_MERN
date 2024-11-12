@@ -1,15 +1,18 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 import {
-  FaHome,
   FaBriefcase,
-  FaFileAlt,
   FaBuilding,
+  FaFileAlt,
+  FaHome,
   FaInfoCircle,
+  FaUser,
+  FaEnvelope,
+  FaLock,
 } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
 
 const Header = () => {
-  // User states for registering
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +51,6 @@ const Header = () => {
           <div className="sub-1 py-2">
             <h1 className="text-2xl font-bold">JobHub</h1>
           </div>
-          {/* Hamburger Icon / Close Icon */}
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} className="focus:outline-none">
               {isOpen ? (
@@ -84,7 +86,6 @@ const Header = () => {
               )}
             </button>
           </div>
-          {/* Navigation Links for larger screens */}
           <div className="hidden md:flex md:space-x-8 flex-grow justify-center">
             <nav className="flex space-x-4">
               <a href="#" className="flex items-center hover:underline">
@@ -101,7 +102,6 @@ const Header = () => {
               </a>
             </nav>
           </div>
-          {/* Sign in and Buttons for larger screens */}
           <div className="hidden md:flex items-center space-x-4 mt-4 md:mt-0">
             <button onClick={toggleModal} className="hover:font-extrabold">
               Sign up
@@ -117,51 +117,33 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
           <div
             className={`md:hidden mt-4 transition-all duration-300 ease-in-out transform ${
               isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
             }`}
           >
-            <nav
-              className={`flex flex-col space-y-2 transition-all duration-300 ease-in-out`}
-            >
-              <a
-                href="#"
-                className={`block py-2 px-4 hover:bg-blue-600 rounded flex items-center`}
-              >
+            <nav className="flex flex-col space-y-2 transition-all duration-300 ease-in-out">
+              <a href="#" className="block py-2 px-4 hover:bg-blue-600 rounded flex items-center">
                 <FaHome className="mr-1" /> Home
               </a>
-              <a
-                href="#"
-                className={`block py-2 px-4 hover:bg-blue-600 rounded flex items-center`}
-              >
+              <a href="#" className="block py-2 px-4 hover:bg-blue-600 rounded flex items-center">
                 <FaBriefcase className="mr-1" /> Jobs
               </a>
-              <a
-                href="#"
-                className={`block py-2 px-4 hover:bg-blue-600 rounded flex items-center`}
-              >
+              <a href="#" className="block py-2 px-4 hover:bg-blue-600 rounded flex items-center">
                 <FaFileAlt className="mr-1" /> Resume Builder
               </a>
-              <a
-                href="#"
-                className={`block py-2 px-4 hover:bg-blue-600 rounded flex items-center`}
-              >
+              <a href="#" className="block py-2 px-4 hover:bg-blue-600 rounded flex items-center">
                 <FaBuilding className="mr-1" /> Companies
               </a>
-              <a
-                href="#"
-                className={`block py-2 px-4 hover:bg-blue-600 rounded flex items-center`}
-              >
+              <a href="#" className="block py-2 px-4 hover:bg-blue-600 rounded flex items-center">
                 <FaInfoCircle className="mr-1" /> About Us
               </a>
               <div className="sub flex space-x-2">
                 <button className="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-800 transition duration-300">
                   Sign in
                 </button>
-                <button className="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-800 transition duration=300">
+                <button className="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-800 transition duration-300">
                   Post Job
                 </button>
               </div>
@@ -169,94 +151,85 @@ const Header = () => {
           </div>
         )}
 
-        {/* Sign-Up Modal */}
         {isModalOpen && (
           <>
-            {/* Overlay */}
             <div
               onClick={toggleModal}
               className="fixed inset-0 bg-black opacity-50 z-[100] cursor-pointer"
             />
-            {/* Modal */}
-            <div
-              className={`fixed inset-x-auto top-[20%] mx-auto w-full max-w-md bg-white rounded-lg shadow-lg z-[200] p-5 transition-transform transform ${
-                isModalOpen ? "translate-y-[0]" : "translate-y-[100%]"
-              }`}
-            >
-              <h2 className="text-xl font-bold mb-4">Sign Up</h2>
-              <form
-                onSubmit={handleSubmit}
-                className="bg-white rounded-lg shadow-lg p-6 space-y-4 max-w-md mx-auto"
-              >
-                {/* Username Field */}
-                <div className="mb-4">
-                  <label
-                    htmlFor="username"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] mx-auto w-full max-w-md bg-white rounded-lg shadow-lg z-[200] p-5">
+              <h2 className="text-xl font-bold mb-4 text-black text-center">
+                Create an account
+              </h2>
+              <p className="text-black text-[11px] text-center">
+                By creating an account or signing in, you agree to JobHub's Terms. You also acknowledge our Cookie and Privacy policies.
+              </p>
+
+              <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-6 space-y-4 max-w-md mx-auto">
+                <div className="mb-4 relative">
+                  <label htmlFor="username" className="block text-sm font-medium text-gray-700">
                     Username
                   </label>
-                  <input
-                    type="text"
-                    id="username"
-                    required
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out shadow-sm hover:shadow-md"
-                    placeholder="Enter your username"
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
+                  <div className="flex items-center border border-gray-300 rounded-md p-3 shadow-sm hover:shadow-md">
+                    <FaUser className="text-gray-500 mr-2" />
+                    <input
+                      type="text"
+                      id="username"
+                      required
+                      className="flex-grow bg-transparent outline-none text-gray-700 placeholder-gray-500"
+                      placeholder="Enter your username"
+                      onChange={(e) => setUserName(e.target.value)}
+                    />
+                  </div>
                 </div>
 
-                {/* Email Field */}
-                <div className="mb-4">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+                <div className="mb-4 relative">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                     Email
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out shadow-sm hover:shadow-md"
-                    placeholder="Enter your email"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                  <div className="flex items-center border border-gray-300 rounded-md p-3 shadow-sm hover:shadow-md">
+                    <FaEnvelope className="text-gray-500 mr-2" />
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      className="flex-grow bg-transparent outline-none text-gray-700 placeholder-gray-500"
+                      placeholder="Enter your email"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
                 </div>
 
-                {/* Password Field */}
-                <div className="mb-6">
-                  <label
-                    htmlFor="password"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+                <div className="mb-6 relative">
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                     Password
                   </label>
-                  <input
-                    type="password"
-                    id="password"
-                    required
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out shadow-sm hover:shadow-md"
-                    placeholder="Enter your password"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <div className="flex items-center border border-gray-300 rounded-md p-3 shadow-sm hover:shadow-md">
+                    <FaLock className="text-gray-500 mr-2" />
+                    <input
+                      type="password"
+                      id="password"
+                      required
+                      className="flex-grow bg-transparent outline-none text-gray-700 placeholder-gray-500"
+                      placeholder="Enter your password"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-blue-700 text-white py-[10px] rounded-md hover:bg-blue-800 transition duration-[200ms] shadow-md hover:shadow-lg"
+                  className="w-full bg-blue-700 text-white py-3 rounded-md hover:bg-blue-800 transition duration-200 shadow-md hover:shadow-lg"
                 >
                   Sign Up
                 </button>
 
-                {/* Close Button */}
                 <button
                   type="button"
                   onClick={toggleModal}
-                  className="mt-[10px] w-full text-center text-gray-600 hover:text-gray-900 transition duration-200 ease-in-out"
+                  className="w-full text-center mt-4 text-gray-600 hover:text-gray-900 transition duration-200 ease-in-out"
                 >
-                  Cancel
+                  <IoMdClose className="inline-block mr-1" /> Close
                 </button>
               </form>
             </div>

@@ -9,12 +9,12 @@ const Job = () => {
       .get("https://mern-workspace-api-1.onrender.com/api/v1/jobs/all")
       .then((res) => {
         setData(res.data);
-        console.log(data);
+        console.log(res.data); // Logging the data directly from response
       })
       .catch((error) => {
         console.log(error);
       });
-  }, ["nashe"]);
+  }, []); // Empty dependency array to run only on mount
 
   return (
     <div>
