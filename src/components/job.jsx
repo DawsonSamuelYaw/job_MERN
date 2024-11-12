@@ -21,7 +21,7 @@ const Job = () => {
       {data.map((single, index) => (
         <div className="container" key={index}>
           <p>{single.title}</p>
-        </div>
+        </div> 
       ))}
     </div>
   );
