@@ -202,7 +202,7 @@ const Header = () => {
                     required
                     className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 transition duration-200 ease-in-out shadow-sm hover:shadow-md"
                     placeholder="Enter your username"
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={(e) => setUserName(e.target.value)}
                   />
                 </div>
 

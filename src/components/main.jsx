@@ -47,7 +47,7 @@ const Main = () => {
         <div className="absolute top-[150px] right-[80px] bg-white opacity-90 text-black p-3 rounded-lg shadow-md text-sm max-w-xs">
           <div className="flex items-center space-x-2">
             <div className="bg-blue-500 text-white p-2 rounded-full">📩</div>
-            <div>
+            <div className="">
               <p className="font-semibold">Congratulations</p>
               <p className="text-xs">You have been hired</p>
             </div>
