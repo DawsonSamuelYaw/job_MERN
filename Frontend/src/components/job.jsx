@@ -1,18 +1,54 @@
-// import axios from "axios";
-import React from 'react';
+import React, { useState } from 'react';
+import { CiSaveDown2 } from "react-icons/ci";
 import Jobs from '../jobs.json';
 
 const Job = () => {
+  const [savedJobs, setSavedJobs] = useState([]);
+
+Jobs.forEach((h)=>{
+  console.log(h.description)
+
+})
+  const toggleSaveJob = (jobId) => {
+    if (savedJobs.includes(jobId)) {
+      // Remove from saved jobs
+      setSavedJobs(savedJobs.filter(id => id !== jobId));
+    } else {
+      // Add to saved jobs
+      setSavedJobs([...savedJobs, jobId]);
+    }
+    console.log(setSavedJobs)
+  };
+
   return (
     <>
       <div className="container mx-auto p-6 font-[poppins]">
         <h1 className="text-3xl font-bold text-center mb-6 text-[#2148C0]">Available Jobs</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/*   <div className="hello grid grid-cols-3">
+            {Jobs.forEach((y)=>(
+              <div className="sub" key={y.id}>
+                <h1>{y.description}</h1>
+
+              </div>
+
+            ))}
+
+          </div> */}
           {Jobs.map((item) => (
             <div
               className="sub bg-white shadow-lg rounded-lg p-6 border-t-2 border-[#2148C0] transform transition duration-300 hover:scale-105"
               key={item.id}
             >
+              <div className="flex flex-row-reverse my-4">
+                <button onClick={() => toggleSaveJob(item.id)} className="focus:outline-none">
+                  <CiSaveDown2 
+                    className={`text-2xl transition-colors duration-200 ${
+                      savedJobs.includes(item.id) ? "text-black" : "text-gray-400"
+                    }`}
+                  />
+                </button>
+              </div>
               <h2 className="text-lg font-semibold text-gray-800 mb-2">{item.title}</h2>
               <p className="text-sm text-gray-600 mb-4">{item.type}</p>
               <p className="text-gray-700 mb-4">{item.description}</p>
@@ -32,30 +68,3 @@ const Job = () => {
 };
 
 export default Job;
-
-
-
-
-
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("https://mern-workspace-api-1.onrender.com/api/v1/jobs/all")
-  //     .then((res) => {
-  //       setData(res.data);
-  //       console.log(res.data); // Logging the data directly from response
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []); // Empty dependency array to run only on mount
-
-  // return (
-  //   <div>
-  //     {data.map((single, index) => (
-  //       <div className="container" key={index}>
-  //         <p>{single.title}</p>
-  //       </div>
-  //     ))}
-  //   </div>
